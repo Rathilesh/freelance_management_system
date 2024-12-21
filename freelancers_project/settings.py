@@ -69,7 +69,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME', default='freelance_management_system'),
         'USER': env('DB_USER', default='postgres'),
-        'PASSWORD': env('DB_PASSWORD', default='your-db-password'),
+        'PASSWORD': env('DB_PASSWORD', default='ccswo0w4c4o4gsgo8gooog44'),
         'HOST': env('DB_HOST', default='127.0.0.1'),
         'PORT': env('DB_PORT', default='5432'),
     }
