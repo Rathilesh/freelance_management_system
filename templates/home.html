@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Freelance Management System - Connecting top freelancers with customers for seamless project execution.">
+    <link rel="icon" href="{% static 'images/home-banner.png' %}" type="image/jpeg">
+    <title>Deityom Freelance</title>
+
+    <!-- Bootstrap CSS (minified version for better performance) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <!-- Include Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+
+        html, body {
+    font-family: 'Roboto', sans-serif; !important;
+    font-size: 1rem;
+    line-height: 2;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+}
+
+.custom-toggler {
+    background-color: var(--button-color) !important; /* Overrides background color */
+    border: none !important; /* Removes any default border */
+}
+
+/* Footer link hover effect */
+.footer-link {
+    color: rgb(151,148,127) !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--button-color) !important;
+}
+
+/* Footer icon hover effect */
+.contact-icon {
+    color: rgb(151,148,127) !important;
+    transition: color 0.3s ease;
+}
+
+.contact-icon:hover {
+    color: var(--button-color) !important;
+}
+
+
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: none !important; /* Remove default toggler icon */
+    width: 20px;
+    height: 20px;
+    background-color: var(--button-color); /* Use the same color for icon */
+    border-radius: 50%; /* Optional: make it circular */
+}
+
+
+ /* General footer styling */
+    #contact {
+        padding: 40px 20px;
+    }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    /* Icon and text alignment */
+    .contact-item i {
+        margin-right: 12px;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        #contact h5 {
+            font-size: 1.5em;
+        }
+        .contact-item p {
+            font-size: 1em;
+        }
+        .contact-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        .contact-item i {
+            margin-right: 0;
+            margin-bottom: 8px;
+        }
+        #contact p {
+            font-size: 0.9em;
+        }
+    }
+
+
+
+        :root {
+            --primary-color: #fff;
+            --button-color:  rgb(130, 50, 60) ;
+            --button-hover-color: #218838;
+            --text-color: rgb(85, 84, 69);
+            --bg-color: #f5f9fd;
+            --card-bg-color: #ffffff;
+            --card-hover-shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            background-color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            padding: 15px;
+        }
+
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            border-bottom: 2px var(--primary-color) ;
+            margin-bottom:20px;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-color) !important;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-right: 0px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--button-color) !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: white !important;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .content {
+            margin-top: 150px; /* Reduced to ensure better spacing on mobile */
+        }
+
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .btn-custom {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 30px;
+            color: white;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            margin-bottom: 15px;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            width: 50%;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-custom i {
+            margin-right: 8px;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--button-color);
+        }
+
+
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            margin: 40px 0;
+            color: var(--text-color);
+        }
+        i{
+        color:var(--button-color);
+        }
+
+        .feature-card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px var(--card-hover-shadow);
+        }
+
+        .feature-card .icon-container i {
+            color: var(--primary-color);
+        }
+
+        .testimonial {
+            margin-top: 60px;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            color:   var(--text-color);
+            text-align: center;
+        }
+
+        .testimonial h5 {
+            color:   var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section {
+            margin-top: 60px;
+            padding: 40px;
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section h5 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .lead {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .feature-card {
+                padding: 15px;
+            }
+
+            .feature-card .icon-container i {
+                font-size: 3rem;
+            }
+
+            .testimonial h5 {
+                font-size: 1.3rem;
+            }
+
+            .contact-section h5 {
+                font-size: 1.3rem;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 1rem;
+                margin-left: 30px;
+            }
+
+            .content {
+                margin-top: 100px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn-custom {
+                width: 100%;
+            }
+
+            .navbar-brand {
+                font-size: 1.6rem;
+                margin-left: 10px;
+            }
+
+            .feature-card {
+                padding: 10px;
+            }
+
+            .testimonial {
+                margin-top: 40px;
+                padding: 20px;
+            }
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+           <!-- Logo -->
+        <a class="navbar-brand logo_h" href="{% url 'home' %}" >
+            <img src="/static/images/logo.png" alt="Logo" style="margin-left:10px;height: 80px; max-height: 80px;border-radius: 50%;" />
+        </a>
+
+   <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="margin-right:10px !important;">
+    <span class="navbar-toggler-icon">
+        <i class="fas fa-bars" style=" color: white;"></i>
+    </span>
+</button>
+
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-address-book"></i> Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register_freelancer' %}"><i class="fas fa-user-plus"></i> Register as Freelancer</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'register_customer' %}"><i class="fas fa-user-plus"></i> Register as Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login_view' %}"><i class="fas fa-sign-in-alt"></i> Login </a></li>
+
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout_view' %}" onclick="return confirmLogout()" style="margin-right:30px !important;"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+
+
+            </ul>
+        </div>
+    </nav>
+{% block content %}
+
+<!-- Banner Area Starts -->
+<div
+    style="background-image: url('{% static 'images/home-banner.png' %}');
+           background-size: cover !important;
+           background-position: center !important;
+           width: 100vw !important;
+           height: 750px !important;
+           position: relative !important;
+           color: white !important;
+
+           border-radius: 0 !important;
+           margin-top: 150px !important;
+           padding: 0 !important;
+           overflow: hidden !important;
+           box-sizing: border-box !important;"
+    class="d-flex justify-content-center align-items-center">
+
+    <div class="content text-center" style="margin: 0 !important; padding: 0 !important;">
+        <div class="container" style="margin: 0 !important; padding: 0 !important; max-width: 100% !important;">
+            <!-- Title Section -->
+            <h1
+                style="font-family: 'Poppins', sans-serif;
+                       font-size: 3.5rem;
+                       font-weight: 700;
+                       margin-bottom: 250px;
+                       transform: translateY(-150px);
+                       letter-spacing: 3px;
+                       text-transform: uppercase;
+                       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;"
+                class="animated fadeIn">
+                <span
+                    style="color: var(--button-color);">
+                    DEITYOM FREELANCE
+                </span>
+            </h1>
+
+
+        </div>
+    </div>
+</div>
+<!-- Banner Area Ends -->
+
+
+
+ {% endblock %}
+
+
+
+       <div class="container">
+    <div class="section-title" style="color:--text-color">
+        &nbsp;&nbsp;&nbsp;<i class="bi bi-airplane-engines" style="font-size: 4rem; margin-right: 10px; color:var(--button-color);"></i>
+        Start Your Freelance Journey With Us
+            <i class="bi bi-airplane-engines" style="font-size: 4rem; margin-right: 10px; color:var(--button-color);"></i>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="bi bi-person-check" style="font-size: 3rem;color:var(--button-color);"></i>
+                </div>
+                <h5>Register as a Freelancer</h5>
+                <p>Join our platform as a freelancer, showcase your skills, and get hired for projects that match your expertise.</p>
+                <a href="{% url 'register_freelancer' %}" class="btn btn-custom btn-primary-custom"><i class="fas fa-arrow-right"></i> Get Started</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="bi bi-person-lines-fill" style="font-size: 3rem;color:var(--button-color);"></i>
+                </div>
+                <h5>Register as a Customer</h5>
+                <p>Sign up as a customer to post your freelance project requirements, connect with talented freelancers, and grow your business.</p>
+                <a href="{% url 'register_customer' %}" class="btn btn-custom btn-primary-custom"><i class="fas fa-arrow-right"></i> Get Started</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="icon-container">
+                     <i class="bi bi-box-arrow-in-right" style="font-size: 3rem;color:var(--button-color);"></i>
+                </div>
+                <h5>Login and Start Your Journey</h5>
+                <p>Already registered? Log in to start exploring freelance opportunities, connect with clients, and grow professionally.</p>
+                <a href="{% url 'login_view' %}" class="btn btn-custom btn-primary-custom"><i class="fas fa-arrow-right"></i> Get Started</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div class="testimonial">
+            <h5>"This platform has made freelance work so much easier!"</h5>
+            <p>Our users love how easy it is to find and get freelancer works.</p>
+        </div>
+
+
+<footer
+    id="contact"
+    style="background-color: var(--primary-color) !important;
+           color: var(--text-color) !important;
+           padding: 100px 0 !important; /* Increased padding for more height */
+           font-family: Arial, sans-serif !important;
+           width: 100vw !important;
+           margin: 0 !important;
+           box-sizing: border-box !important;
+           position: relative !important; /* Ensure it stays at the bottom */
+           overflow: hidden !important;">
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h5 style="color: var(--text-color) !important; font-size: 1.8em;">Contact Us</h5>
+    </div>
+
+    <div class="contact-item" style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+        <i class="fas fa-envelope contact-icon" style="font-size: 1.6em; margin-right: 12px; color: var(--button-color) !important;"></i>
+        <p style="margin: 0; font-size: 1.1em; color: var(--button-color) !important;">
+            <a href="mailto:deityommarketing@gmail.com" class="footer-link" style="color: var(--text-color) !important;">deityommarketing@gmail.com</a>
+        </p>
+    </div>
+
+    <div class="contact-item" style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+        <i class="fas fa-phone-alt contact-icon" style="font-size: 1.6em; margin-right: 12px; color: var(--button-color) !important;"></i>
+        <p style="margin: 0; font-size: 1.1em; color: var(--text-color) !important;">
+            <a href="tel:+919074598533" class="footer-link" style="color: var(--text-color) !important;">+91 90745 98533</a>
+        </p>
+    </div>
+
+    <div class="contact-item" style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+        <i class="fas fa-map-marker-alt contact-icon" style="font-size: 1.6em; margin-right: 12px; color: var(--button-color) !important;"></i>
+        <p style="margin: 0; font-size: 1.1em; color: var(--text-color) !important;">
+            Ground Floor, Omkar Tower, Palayam, Kozhikode 673002, Kerala
+        </p>
+    </div>
+
+    <!-- Terms and Conditions Link -->
+    <div style="text-align: center; margin-top: 15px;">
+        <p style="margin: 0;">
+            <a href="{% url 'terms_and_conditions' %}" class="footer-link" style="font-size: 1em; text-decoration: underline; color: var(--text-color) !important;">Terms and Conditions</a>
+        </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <p style="font-size: 0.9em; color: var(--text-color) !important;">&copy; 2024 Deityom. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    function confirmLogout() {
+        // Display a confirmation dialog
+        return confirm("Are you sure you want to log out?");
+    }
+
+    function confirmDelete() {
+    return confirm("Are you sure you want to delete this item?");
+}
+
+</script>
+
+
+  <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function confirmDelete() {
+    return confirm("Are you sure you want to delete this item?");
+}
+
+        function confirmApply() {
+    return confirm("Are you sure you want to apply?");
+        }
+    </script>
+
+</body>
+
+</html>

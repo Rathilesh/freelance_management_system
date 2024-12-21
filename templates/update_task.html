@@ -1,0 +1,63 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px; margin-top: 150px !important;">
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-header bg-primary text-white text-center rounded-top" style="background-color:var(--button-color) !important;">
+            <h3 class="mb-0">Edit Task</h3>
+        </div>
+        <div class="card-body p-4">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+
+
+                        <!-- Replace work_category with a custom dropdown -->
+<select name="work_category" class="form-control">
+    <option value="" disabled selected>Select your work category</option>
+    <option value="Backend">Backend</option>
+    <option value="Frontend">Frontend</option>
+    <option value="Full Stack">Full Stack</option>
+    <option value="Digital Marketing">Digital Marketing</option>
+    <option value="Graphic Design">Graphic Design</option>
+    <option value="Video Editing">Video Editing</option>
+    <option value="Photo Editing">Photo Editing</option>
+    <option value="Others">Others</option>
+</select>
+
+
+
+
+                            <tr>
+                                <td><strong>{{ form.description.label }}</strong></td>
+                                <td>{{ form.description }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>{{ form.deadline.label }}</strong></td>
+                                <td>{{ form.deadline }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>{{ form.payment_amount.label }}</strong></td>
+                                <td>{{ form.payment_amount }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>{{ form.file_upload.label }}</strong></td>
+                                <td>{{ form.file_upload }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-success w-100 mt-3" style="background-color:var(--button-color) !important;border:none;">Update Task</button>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+      .btn:hover {
+         background-color: var(--button-color);
+        opacity: 0.9;
+    }
+</style>
+{% endblock %}

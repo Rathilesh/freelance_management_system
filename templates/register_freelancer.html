@@ -1,0 +1,225 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container mt-5 freelancer-registration" style="margin-top:150px !important;">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Freelancer Registration</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if user_form.errors %}
+                            <div class="alert alert-danger">
+                                {% for field in user_form %}
+                                    {% for error in field.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th><label for="username">Username</label></th>
+                                    <td class="text-right">{{ user_form.username }}</td> <!-- Added class text-right -->
+                                </tr>
+
+                                <tr>
+                                    <th><label for="email">Email</label></th>
+                                    <td class="text-right">{{ user_form.email }}</td> <!-- Added class text-right -->
+                                </tr>
+
+                                <tr>
+                                    <th><label for="password1">Password</label></th>
+                                    <td class="text-right">{{ user_form.password1 }}</td> <!-- Added class text-right -->
+                                </tr>
+
+                                <tr>
+                                    <th><label for="password2">Confirm Password</label></th>
+                                    <td class="text-right">{{ user_form.password2 }}</td> <!-- Added class text-right -->
+                                </tr>
+
+
+                              <tr>
+                                    <th><label for="phone_number">Full Name</label></th>
+                                    <td class="text-right">{{ profile_form.name }}</td> <!-- Added class text-right -->
+                                </tr>
+
+                                <tr>
+                                    <th><label for="phone_number">Phone Number</label></th>
+                                    <td class="text-right">{{ profile_form.phone_number }}</td> <!-- Added class text-right -->
+                                </tr>
+
+                                <tr>
+                                    <th><label for="communication_address">Communication Address</label></th>
+                                    <td class="text-right">{{ profile_form.communication_address }}</td> <!-- Added class text-right -->
+                                </tr>
+
+                                <tr>
+                                    <th><label for="resume">Resume</label></th>
+                                    <td class="text-right">{{ profile_form.resume }}</td> <!-- Added class text-right -->
+                                </tr>
+                            </table>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mt-4" >Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p>Already have an account? <a href="{% url 'login_view' %}">Login here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom CSS for error messages */
+    .error-message {
+        color: red; /* Retained red for errors */
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
+
+    /* Scoped CSS to avoid conflicts with other pages */
+    .freelancer-registration {
+        background-color: var(--primary-color);
+    }
+
+    .freelancer-registration .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .freelancer-registration .card-header {
+        background-color: var(--button-color);
+        color: white;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .freelancer-registration .form-control {
+        border-radius: 0.5rem;
+        box-shadow: none;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s ease;
+    }
+
+    .freelancer-registration .form-control:focus {
+        border-color: var(--button-color); /* Changed from green to button color */
+        box-shadow: 0 0 5px rgba(255, 106, 19, 0.25); /* Adjust to match button color */
+    }
+
+    .freelancer-registration .btn-primary {
+        background-color: var(--button-color);
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        transition: background-color 0.3s;
+        border: none;
+    }
+
+    .freelancer-registration .btn-primary:hover {
+         background-color: var(--button-color);
+        opacity: 0.9;
+    }
+
+    .freelancer-registration .alert {
+        font-size: 1rem;
+    }
+
+    .freelancer-registration .table th,
+    .freelancer-registration .table td {
+        vertical-align: middle;
+    }
+
+    .freelancer-registration .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .freelancer-registration .text-center a {
+        color: var(--button-color); /* Changed link color from green */
+        text-decoration: none;
+    }
+
+    .freelancer-registration .text-center a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 992px) {
+        .freelancer-registration .card {
+            padding: 10px;
+        }
+
+        .freelancer-registration .card-header {
+            font-size: 1.3rem;
+            padding: 1.2rem;
+        }
+
+        .freelancer-registration .btn-primary {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .freelancer-registration .table-responsive {
+            overflow-x: auto;
+        }
+
+        .freelancer-registration .card-header {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .freelancer-registration .table th,
+        .freelancer-registration .table td {
+            display: block;
+            width: 100%;
+        }
+
+        .freelancer-registration .table td {
+            padding: 8px;
+            border: none;
+        }
+
+        .freelancer-registration .form-control {
+            width: 100%;
+        }
+
+        .freelancer-registration .btn-primary {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+
+        .freelancer-registration .text-center {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .freelancer-registration .card {
+            padding: 8px;
+        }
+
+        .freelancer-registration .card-header {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .freelancer-registration .btn-primary {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+</style>
+
+{% endblock %}

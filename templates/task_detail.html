@@ -1,0 +1,72 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-5  font-weight-bold" style="color: #00796b;">Task Details</h2>
+        <div class="card shadow-lg rounded">
+            <div class="card-body">
+                <!-- Task Information in Table Structure -->
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                     <tr>
+                            <th scope="row" class="font-weight-bold">Work Category:</th>
+                            <td>{{ task.category }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="font-weight-bold">Title:</th>
+                            <td>{{ task.title }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="font-weight-bold">Description:</th>
+                            <td>{{ task.description }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="font-weight-bold">Payment:</th>
+                            <td>Rs. {{ task.payment_amount }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="font-weight-bold">Deadline:</th>
+                            <td>{{ task.deadline }}</td>
+                        </tr>
+
+                            <tr>
+                            <th scope="row" class="font-weight-bold">Task URL:</th>
+                            <td>
+                                {% if task.task_url %}
+                                    {{ task.task_url }}
+                                {% else %}
+                                    <span class="text-muted">No task url available for this task.</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row" class="font-weight-bold">Document:</th>
+                            <td>
+                                {% if task.file_upload %}
+                                    <a href="{{ task.file_upload.url }}" target="_blank" class="btn btn-success btn-sm">View Document</a>
+                                {% else %}
+                                    <span class="text-muted">No document available for this task.</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <!-- Back Button with Inline Grey Styling -->
+                <div class="mt-4 text-center">
+                    <button
+                        class="btn btn-lg"
+                        style="background-color: #808080; border-color: #808080; color: white; padding: 10px 20px; border-radius: 5px; font-size: 1.1rem; transition: background-color 0.3s, color 0.3s;"
+                        onmouseover="this.style.backgroundColor='#505050'; this.style.borderColor='#505050';"
+                        onmouseout="this.style.backgroundColor='#808080'; this.style.borderColor='#808080';"
+                        onclick="goBack()">Back to Task List
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

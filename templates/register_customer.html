@@ -1,0 +1,216 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container mt-5 customer-registration" style="margin-top:150px !important;">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Customer Registration</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {% if user_form.errors or profile_form.errors %}
+                            <div class="alert alert-danger">
+                                {% for field in user_form %}
+                                    {% for error in field.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
+
+                            </div>
+                        {% endif %}
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th><label for="username">Username</label></th>
+                                    <td>{{ user_form.username }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th><label for="email">Email</label></th>
+                                    <td>{{ user_form.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="password1">Password</label></th>
+                                    <td>{{ user_form.password1 }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="password2">Confirm Password</label></th>
+                                    <td>{{ user_form.password2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="username">Full Name</label></th>
+                                    <td>{{ profile_form.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="phone_number">Phone Number</label></th>
+                                    <td>{{ profile_form.phone_number }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="communication_address">Communication Address</label></th>
+                                    <td>{{ profile_form.communication_address }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="company_name">Company Name</label></th>
+                                    <td>{{ profile_form.company_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th><label for="business_area">Business Area</label></th>
+                                    <td>{{ profile_form.business_area }}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mt-4">Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <p>Already have an account? <a href="{% url 'login_view' %}">Login here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Scoped CSS for customer registration */
+    .customer-registration {
+        background-color: var(--primary-color);
+    }
+
+    .customer-registration .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .customer-registration .card-header {
+        background-color: var(--button-color);
+        color: white;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .customer-registration .form-control {
+        border-radius: 0.5rem;
+        box-shadow: none;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s ease;
+    }
+
+    .customer-registration .form-control:focus {
+        border-color: var(--button-color);
+        box-shadow: 0 0 5px rgba(255, 106, 19, 0.25);
+    }
+
+    .customer-registration .btn-primary {
+        background-color: var(--button-color);
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        transition: background-color 0.3s;
+         border: none; /* Remove any border */
+    }
+
+    .customer-registration .btn-primary:hover {
+        background-color: var(--button-color);
+        opacity: 0.9;
+    }
+
+    .customer-registration .alert {
+        font-size: 1rem;
+    }
+
+    .customer-registration .table th,
+    .customer-registration .table td {
+        vertical-align: middle;
+    }
+
+    .customer-registration .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .customer-registration .text-center a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .customer-registration .text-center a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 992px) {
+        .customer-registration .card {
+            padding: 10px;
+        }
+
+        .customer-registration .card-header {
+            font-size: 1.3rem;
+            padding: 1.2rem;
+        }
+
+        .customer-registration .btn-primary {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .customer-registration .table-responsive {
+            overflow-x: auto;
+        }
+
+        .customer-registration .card-header {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .customer-registration .table th,
+        .customer-registration .table td {
+            display: block;
+            width: 100%;
+        }
+
+        .customer-registration .table td {
+            padding: 8px;
+            border: none;
+        }
+
+        .customer-registration .form-control {
+            width: 100%;
+        }
+
+        .customer-registration .btn-primary {
+            font-size: 1rem;
+            padding: 10px 20px;
+
+        }
+
+        .customer-registration .text-center {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .customer-registration .card {
+            padding: 8px;
+        }
+
+        .customer-registration .card-header {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+
+        .customer-registration .btn-primary {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+</style>
+{% endblock %}
