@@ -14,7 +14,7 @@ SECRET_KEY = env('SECRET_KEY', default='your-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['deityomfreelancer.com','www.deityomfreelancer.com','82.112.226.230','localhost']
+ALLOWED_HOSTS = ['https://w08s0kksw4cccgcoc0cg0sg8.deityomfreelancer.com']
 
 # Application definition
 INSTALLED_APPS = [
